@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Segurança em Eletricidade - Eletricista Instalador Predial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen py-10 px-4">
+
+  <!-- Container Principal -->
+  <div class="max-w-3xl mx-auto">
+    
+    <!-- Cabeçalho -->
+    <header class="text-center mb-10 border-b border-slate-200 pb-8 bg-white p-8 rounded-2xl shadow-sm">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border border-amber-200">
+        <i class="fa-solid fa-bolt"></i> Avaliação Completa & Desafios Práticos
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Exercícios de Segurança em Eletricidade
+      </h1>
+      <p class="mt-2 text-slate-600 text-base max-w-xl mx-auto">
+        Curso de Eletricista Instalador Predial — Teste seus conhecimentos nas normas NR-10 e NBR 5410 com questões conceituais e desafios de estudo de caso.
+      </p>
+    </header>
+
+    <!-- Placar e Progresso (Oculto até terminar) -->
+    <div id="score-card" class="hidden mb-8 p-6 bg-slate-900 text-white border border-slate-700 rounded-2xl text-center shadow-xl transition-all duration-300">
+      <div id="badge-icon" class="w-20 h-20 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl border border-amber-500/30">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold mb-1 tracking-tight">Avaliação Concluída!</h2>
+      <p id="score-text" class="text-lg text-slate-200 font-medium mb-3"></p>
+      
+      <!-- Nota Final e Classificação -->
+      <div class="inline-block px-5 py-2.5 bg-slate-800 rounded-xl border border-slate-700 mb-6">
+        <span class="text-xs uppercase tracking-wider text-slate-400 block font-semibold mb-1">Nota Final do Aluno</span>
+        <div id="final-grade" class="text-3xl font-black text-amber-400">0.0 / 10</div>
+        <p id="grade-status" class="text-xs font-semibold mt-1 text-slate-300"></p>
+      </div>
+
+      <div class="block">
+        <button onclick="restartQuiz()" class="px-6 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold rounded-xl transition duration-200 inline-flex items-center gap-2 shadow-lg">
+          <i class="fa-solid fa-rotate-right"></i> Refazer Exercícios
+        </button>
+      </div>
+    </div>
+
+    <!-- Lista de Questões -->
+    <div id="quiz-container" class="space-y-8">
+
+      <!-- Questão 1 -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="1">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 1</span>
+          <span class="text-xs text-slate-400 font-medium">NBR 5410</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          De acordo com a norma NBR 5410, qual é a função principal do Interruptor Diferencial Residual (DR) na instalação predial?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(1, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Proteger a fiação contra aquecimento excessivo e sobrecarga.
+          </button>
+          <button onclick="checkAnswer(1, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Proteger as pessoas e animais contra choques elétricos por fuga de corrente.
+          </button>
+          <button onclick="checkAnswer(1, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Eliminar a necessidade do condutor de proteção (fio terra) no circuito.
+          </button>
+          <button onclick="checkAnswer(1, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Aumentar a voltagem da rede elétrica em momentos de pico.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 2 -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="2">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 2</span>
+          <span class="text-xs text-slate-400 font-medium">Efeitos Fisiológicos</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Um eletricista toca involuntariamente em um condutor energizado e sofre a contração muscular que o impede de soltar o fio. Essa reação é chamada de:
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(2, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Fibrilação ventricular.
+          </button>
+          <button onclick="checkAnswer(2, 'B', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Parada respiratória temporária.
+          </button>
+          <button onclick="checkAnswer(2, 'C', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Tetanização muscular.
+          </button>
+          <button onclick="checkAnswer(2, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Arco de repulsão elétrica.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 3 -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="3">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 3</span>
+          <span class="text-xs text-slate-400 font-medium">NR-10</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Por que a NR-10 proíbe estritamente o uso de adornos (alianças, relógios, correntes) no trabalho com instalações elétricas?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(3, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Aumentam o peso das mãos e reduzem a agilidade com as ferramentas.
+          </button>
+          <button onclick="checkAnswer(3, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> São materiais condutores que podem causar arcos elétricos e curtos-circuitos graves.
+          </button>
+          <button onclick="checkAnswer(3, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Podem arranhar a pintura dos quadros de distribuição elétricos.
+          </button>
+          <button onclick="checkAnswer(3, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Impedem o encaixe correto das ferramentas isoladas.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 4 -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="4">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 4</span>
+          <span class="text-xs text-slate-400 font-medium">EPIs & Isolamento</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Qual classe de luva de borracha isolante é a mais adequada para o trabalho do Eletricista Instalador Predial em Baixa Tensão (até 1.000 V)?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(4, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Classe 4 (até 36.000 V).
+          </button>
+          <button onclick="checkAnswer(4, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Classe 0 (até 1.000 V).
+          </button>
+          <button onclick="checkAnswer(4, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Classe 2 (até 17.000 V).
+          </button>
+          <button onclick="checkAnswer(4, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Luva nitrílica de limpeza comum.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 5 -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 5</span>
+          <span class="text-xs text-slate-400 font-medium">Procedimentos de Segurança</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Segundo a NR-10, para realizar uma manutenção segura em um painel elétrico residencial, qual deve ser a primeira atitude antes de tocar nos condutores?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(5, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Trocar todos os disjuntores do quadro por modelos de menor amperagem.
+          </button>
+          <button onclick="checkAnswer(5, 'B', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Tocar rapidamente no fio com a palma da mão para sentir se está aquecido.
+          </button>
+          <button onclick="checkAnswer(5, 'C', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Seccionar (desligar) o disjuntor, travar/sinalizar e constatar a ausência de tensão com medidor.
+          </button>
+          <button onclick="checkAnswer(5, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Molhar as mãos para melhorar a aderência às ferramentas isoladas.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 6 (NOVA) -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 6</span>
+          <span class="text-xs text-slate-400 font-medium">Aterramento Elétrico (NBR 5410)</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Qual é o papel do condutor de proteção (fio terra PE - verde/amarelo) quando ocorre uma falha na isolação da carcaça metálica de um eletrodoméstico?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(6, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Armazenar a eletricidade estática para evitar oscilações no consumo de energia.
+          </button>
+          <button onclick="checkAnswer(6, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Escoar a corrente de fuga com segurança para a terra, acionando a proteção automática.
+          </button>
+          <button onclick="checkAnswer(6, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Substituir a função do fio neutro no retorno da corrente do circuito.
+          </button>
+          <button onclick="checkAnswer(6, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Impedir a entrada de surtos atmosféricos na tubulação de água da edificação.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 7 (NOVA) -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="7">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 7</span>
+          <span class="text-xs text-slate-400 font-medium">Ferramental de Trabalho (IEC 60900)</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Durante a inspeção diária, o eletricista percebeu uma pequena ranhura/corte no isolamento do cabo do alicate universal (1000V). Qual é a conduta correta?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(7, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Passar três voltas de fita isolante comum sobre o rasgo e continuar utilizando normalmente.
+          </button>
+          <button onclick="checkAnswer(7, 'B', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Usar a ferramenta apenas para cortar fios do condutor neutro, mantendo o uso rotineiro.
+          </button>
+          <button onclick="checkAnswer(7, 'C', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Retirar a ferramenta de uso imediatamente e substituí-la por uma íntegra e certificada.
+          </button>
+          <button onclick="checkAnswer(7, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Aplicar cola instantânea no corte e aguardar a secagem antes de reinstalar o painel.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- Questão 8 (NOVA) -->
+      <div class="q-block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm" data-question="8">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">Questão 8</span>
+          <span class="text-xs text-slate-400 font-medium">Riscos Térmicos</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">
+          Além da passagem da corrente pelo corpo (choque elétrico), qual é outro risco grave associado ao curto-circuito de alta intensidade em quadros elétricos?
+        </h3>
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(8, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">A)</span> Emissão de radiação magnética que desmagnetiza permanentemente as ferramentas manuais.
+          </button>
+          <button onclick="checkAnswer(8, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">B)</span> Formação de arco elétrico (flash voltaico) com altíssimas temperaturas e queimaduras severas.
+          </button>
+          <button onclick="checkAnswer(8, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">C)</span> Congelamento súbito dos contatos internos dos disjuntores devido ao vácuo formado.
+          </button>
+          <button onclick="checkAnswer(8, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-slate-400">D)</span> Inversão automática da frequência da rede de 60 Hz para 120 Hz.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- DESAFIO PRÁTICO 1 -->
+      <div class="q-block bg-amber-50/60 border-2 border-amber-300 rounded-2xl p-6 shadow-sm" data-question="9">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-extrabold text-amber-800 uppercase tracking-wider bg-amber-200 px-3 py-1 rounded-md border border-amber-300">
+            <i class="fa-solid fa-triangle-exclamation"></i> Desafio Prático 1
+          </span>
+          <span class="text-xs text-amber-700 font-semibold">Tomada de Decisão em Campo</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-3">
+          Estudo de Caso — O Cliente com Pressa:
+        </h3>
+        <p class="text-sm text-slate-700 mb-4 bg-white p-3.5 rounded-xl border border-amber-200">
+          Você chega para trocar uma tomada queimada numa loja comercial. O dono pede que você faça o serviço sem desligar o disjuntor geral para "não parar o caixa nem desligar os computadores". O ambiente está bem iluminado, mas o piso de cerâmica acabou de ser lavado e está úmido.
+        </p>
+        <p class="font-bold text-slate-900 mb-3 text-base">Qual deve ser a sua atitude profissional imediata?</p>
+        
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(9, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">A)</span> Realizar o serviço energizado rapidamente, usando sapatos com sola de borracha para compensar o piso molhado.
+          </button>
+          <button onclick="checkAnswer(9, 'B', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">B)</span> Explicar ao cliente os riscos fatais de choque e piso molhado, recusar o trabalho energizado e agendar o desligamento programado.
+          </button>
+          <button onclick="checkAnswer(9, 'C', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">C)</span> Envolver os cabos fase com fita isolante temporária e trocar o módulo com a mão esquerda no bolso.
+          </button>
+          <button onclick="checkAnswer(9, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">D)</span> Secar o piso com um pano e trabalhar com luvas de pano comuns para agilizar o atendimento.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+      <!-- DESAFIO PRÁTICO 2 -->
+      <div class="q-block bg-amber-50/60 border-2 border-amber-300 rounded-2xl p-6 shadow-sm" data-question="10">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-extrabold text-amber-800 uppercase tracking-wider bg-amber-200 px-3 py-1 rounded-md border border-amber-300">
+            <i class="fa-solid fa-kit-medical"></i> Desafio Prático 2
+          </span>
+          <span class="text-xs text-amber-700 font-semibold">Socorro e Emergência</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 mb-3">
+          Estudo de Caso — Acidente na Obra:
+        </h3>
+        <p class="text-sm text-slate-700 mb-4 bg-white p-3.5 rounded-xl border border-amber-200">
+          Você está num canteiro de obras e vê um colega caído ao lado de uma extensão descascada. Ele está desacordado e a mão dele ainda está tocando no cabo energizado. Outro ajudante corre assustado para puxar a vítima pelos braços.
+        </p>
+        <p class="font-bold text-slate-900 mb-3 text-base">Qual é a sequência correta de ações que você deve realizar para salvar a situação?</p>
+
+        <div class="space-y-3 options">
+          <button onclick="checkAnswer(10, 'A', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">A)</span> Empurrar o ajudante para longe, agarrar as roupas secas do colega acidentado e puxá-lo com força do cabo.
+          </button>
+          <button onclick="checkAnswer(10, 'B', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">B)</span> Jogar água sobre a extensão para provocando um curto-circuito proposital no disjuntor da obra.
+          </button>
+          <button onclick="checkAnswer(10, 'C', true)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">C)</span> Impedir o ajudante de tocar na vítima, desligar imediatamente a tomada/disjuntor da extensão e chamar o socorro médico (SAMU 192).
+          </button>
+          <button onclick="checkAnswer(10, 'D', false)" class="opt-btn w-full text-left p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-100/50 transition font-medium text-slate-700 flex items-start gap-3">
+            <span class="font-bold text-amber-700">D)</span> Iniciar as massagens cardíacas na vítima imediatamente no mesmo local em que ela está caida.
+          </button>
+        </div>
+        <div class="feedback hidden mt-4 p-4 rounded-xl text-sm leading-relaxed"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const userAnswers = {};
+    const TOTAL_QUESTIONS = 10;
+    
+    const explanations = {
+      1: "O Dispositivo DR detecta fugas de corrente a partir de 30 mA e desliga a energia instantaneamente, protegendo seres vivos contra choques elétricos graves.",
+      2: "A tetanização é a contração involuntária dos músculos causada pela corrente alternada (60 Hz), impedindo que a vítima solte o fio energizado.",
+      3: "Metais como ouro, prata e aço conduzem eletricidade com facilidade extrema. O uso de adornos provoca arcos elétricos e queimaduras gravíssimas nas mãos/corpo.",
+      4: "Para Baixa Tensão (até 1.000 V), a Classe 0 é a norma padrão para o Eletricista Predial. A Classe 00 atende até 500 V.",
+      5: "Pela NR-10, o procedimento correto de desenergização exige desligamento, impedimento de reenergização e testagem obrigatória com multímetro ou detector de tensão antes de tocar em qualquer fiação.",
+      6: "O fio terra canaliza a fuga de corrente metálica com baixa resistência de volta ao QDF, acionando instantaneamente a proteção (DR/Disjuntor) antes que alguém toque no aparelho energizado.",
+      7: "A norma IEC 60900 exige integridade total do isolamento. Fitamento ou gambiarras não garantem a rigidez dielétrica do isolante contra 1000V, colocando a vida do profissional em risco.",
+      8: "O arco elétrico ioniza o ar atinge temperaturas extremas (até 20.000 °C), provocando queimaduras de 3º grau e onda de pressão violenta, sendo um dos maiores riscos em instalações.",
+      9: "Nenhuma conveniência de cliente se sobrepõe à vida. Umidade extrema + trabalho energizado sem isolamento adequado viola frontalmente a NR-10. A única atitude profissional é recusar e programar o desligamento.",
+      10: "Regra universal do socorrista: NUNCA se tornar a segunda vítima. Tocar em quem está recebendo descarga transmite o choque. Deve-se cortar a energia na fonte antes de prestar assistência médica."
+    };
+
+    function checkAnswer(qNum, option, isCorrect) {
+      if (userAnswers[qNum] !== undefined) return; // Evita responder 2 vezes
+
+      userAnswers[qNum] = isCorrect;
+      const qBlock = document.querySelector(`[data-question="${qNum}"]`);
+      const buttons = qBlock.querySelectorAll('.opt-btn');
+      const feedback = qBlock.querySelector('.feedback');
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-slate-100', 'hover:bg-amber-100/50');
+        btn.classList.add('cursor-not-allowed', 'opacity-60');
+      });
+
+      const selectedBtn = event.currentTarget;
+      selectedBtn.classList.remove('opacity-60');
+
+      if (isCorrect) {
+        selectedBtn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
+        feedback.classList.remove('hidden');
+        feedback.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        feedback.innerHTML = `<p class="font-bold flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i> Resposta Correta!</p><p class="mt-1">${explanations[qNum]}</p>`;
+      } else {
+        selectedBtn.classList.add('bg-rose-50', 'border-rose-500', 'text-rose-900');
+        feedback.classList.remove('hidden');
+        feedback.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        feedback.innerHTML = `<p class="font-bold flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-rose-600"></i> Resposta Incorreta</p><p class="mt-1">${explanations[qNum]}</p>`;
+      }
+
+      checkQuizCompletion();
+    }
+
+    function checkQuizCompletion() {
+      if (Object.keys(userAnswers).length === TOTAL_QUESTIONS) {
+        const correctCount = Object.values(userAnswers).filter(Boolean).length;
+        const scoreCard = document.getElementById('score-card');
+        const scoreText = document.getElementById('score-text');
+        const finalGrade = document.getElementById('final-grade');
+        const gradeStatus = document.getElementById('grade-status');
+        const badgeIcon = document.getElementById('badge-icon');
+
+        const percentage = Math.round((correctCount / TOTAL_QUESTIONS) * 100);
+        const grade = (correctCount * 1.0).toFixed(1);
+
+        scoreText.innerHTML = `Você acertou <b>${correctCount} de ${TOTAL_QUESTIONS}</b> questões (${percentage}% de aproveitamento).`;
+        finalGrade.innerText = `${grade} / 10`;
+
+        if (grade >= 8.0) {
+          gradeStatus.innerText = "Status: APROVADO — Excelente domínio das normas!";
+          gradeStatus.className = "text-xs font-bold mt-1 text-emerald-400";
+          badgeIcon.className = "w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl border border-emerald-500/30";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-shield-halved"></i>`;
+        } else if (grade >= 6.0) {
+          gradeStatus.innerText = "Status: ATENÇÃO — Aprovado com ressalvas. Revise as questões incorretas.";
+          gradeStatus.className = "text-xs font-bold mt-1 text-amber-400";
+          badgeIcon.className = "w-20 h-20 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl border border-amber-500/30";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+        } else {
+          gradeStatus.innerText = "Status: REPROVADO — Necessário refazer a leitura dos módulos NR-10 e NBR 5410.";
+          gradeStatus.className = "text-xs font-bold mt-1 text-rose-400";
+          badgeIcon.className = "w-20 h-20 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl border border-rose-500/30";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-circle-xmark"></i>`;
+        }
+
+        scoreCard.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function restartQuiz() {
+      location.reload();
+    }
+  </script>
+</body>
+</html>
